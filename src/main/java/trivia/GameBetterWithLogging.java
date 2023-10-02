@@ -3,11 +3,7 @@ package trivia;
 // REFACTOR ME
 public class GameBetterWithLogging implements IGame {
 
-  private Questions questions = new Questions(
-      QuestionCategoryName.POP.createQuestionList(),
-      QuestionCategoryName.SCIENCE.createQuestionList(),
-      QuestionCategoryName.SPORTS.createQuestionList(),
-      QuestionCategoryName.ROCK.createQuestionList());
+  private Questions questions = Questions.create();
 
   private Board board = Board.create(QuestionCategoryName.POP, QuestionCategoryName.SCIENCE,
       QuestionCategoryName.SPORTS, QuestionCategoryName.ROCK);
