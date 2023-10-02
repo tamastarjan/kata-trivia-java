@@ -23,7 +23,7 @@ public class GameTest {
     if (printExpected) {
       System.out.println(expectedOutput);
     }
-    String actualOutput = extractOutput(new Random(seed), new GameBetter());
+    String actualOutput = extractOutput(new Random(seed), new GameBetterWithLogging());
     assertEquals("Change detected for seed " + seed +
             ". To breakpoint through it, run this seed alone using the (ignored) test below",
         expectedOutput, actualOutput);
