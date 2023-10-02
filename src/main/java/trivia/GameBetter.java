@@ -9,10 +9,11 @@ public class GameBetter implements IGame {
   int[] purses = new int[6];
   boolean[] inPenaltyBox = new boolean[6];
 
-  private QuestionList popQuestions = QuestionList.create("Pop", 50);
-  private QuestionList scienceQuestions = QuestionList.create("Science", 50);
-  private QuestionList sportsQuestions = QuestionList.create("Sports", 50);
-  private QuestionList rockQuestions = QuestionList.create("Rock", 50);
+  private QuestionBank questionBank = new QuestionBank(
+      QuestionList.create("Pop", 50),
+      QuestionList.create("Science", 50),
+      QuestionList.create("Sports", 50),
+      QuestionList.create("Rock", 50));
 
   int currentPlayer = 0;
   boolean isGettingOutOfPenaltyBox;
@@ -76,14 +77,7 @@ public class GameBetter implements IGame {
   }
 
   private void askQuestion() {
-    if (currentCategory() == "Pop")
-      System.out.println(popQuestions.next());
-    if (currentCategory() == "Science")
-      System.out.println(scienceQuestions.next());
-    if (currentCategory() == "Sports")
-      System.out.println(sportsQuestions.next());
-    if (currentCategory() == "Rock")
-      System.out.println(rockQuestions.next());
+    questionBank.askQuestion(currentCategory());
   }
 
   private String currentCategory() {
