@@ -61,4 +61,8 @@ class Players {
   public boolean isNotAWinner() {
     return getCurrentPlayerCoins() != 6;
   }
+
+  public void removeCurrentPlayerFromPenaltyBox() {
+    getCurrentPlayer().removeFromPenaltyBox();
+  }
 }

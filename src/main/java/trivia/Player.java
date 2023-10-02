@@ -45,4 +45,8 @@ class Player {
   public boolean isInPenaltyBox() {
     return inPenaltyBox;
   }
+
+  public void removeFromPenaltyBox() {
+    inPenaltyBox = false;
+  }
 }
