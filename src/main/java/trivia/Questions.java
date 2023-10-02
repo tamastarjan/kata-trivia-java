@@ -3,11 +3,11 @@ package trivia;
 import java.util.HashMap;
 import java.util.Map;
 
-class QuestionBank {
+class Questions {
 
   private Map<String, QuestionList> categoryToQuestionList = new HashMap<>();
 
-  public QuestionBank(QuestionList... questionLists) {
+  public Questions(QuestionList... questionLists) {
     for (QuestionList questionList : questionLists) {
       categoryToQuestionList.put(questionList.getCategoryName(), questionList);
     }

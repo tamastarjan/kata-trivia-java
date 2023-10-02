@@ -5,7 +5,7 @@ public class GameBetter implements IGame {
 
   private Players players = Players.create();
 
-  private QuestionBank questionBank = new QuestionBank(
+  private Questions questions = new Questions(
       QuestionList.create("Pop", 50),
       QuestionList.create("Science", 50),
       QuestionList.create("Sports", 50),
@@ -66,7 +66,7 @@ public class GameBetter implements IGame {
   }
 
   private void askQuestion() {
-    questionBank.askQuestion(currentCategory());
+    questions.askQuestion(currentCategory());
   }
 
   private String currentCategory() {
@@ -106,7 +106,7 @@ public class GameBetter implements IGame {
 
     players.putCurrentPlayerInPenaltyBox();
     players.endTurn();
-    
+
     return true;
   }
 }
