@@ -1,7 +1,7 @@
 package trivia;
 
 // REFACTOR ME
-public class GameBetterWithLogging implements IGame {
+public class GameBetter implements IGame {
 
   private Questions questions = Questions.create();
 
