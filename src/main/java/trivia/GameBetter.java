@@ -110,10 +110,10 @@ public class GameBetter implements IGame {
          addCoinToCurrentPlayerPurse();
          printCurrentPlayerCoins();
 
-         boolean winner = didPlayerWin();
+         boolean notAWinner = notAWinner();
          endTurn();
 
-         return winner;
+         return notAWinner;
       }
 
       if (!isGettingOutOfPenaltyBox) {
@@ -125,10 +125,10 @@ public class GameBetter implements IGame {
       addCoinToCurrentPlayerPurse();
       printCurrentPlayerCoins();
 
-      boolean winner = didPlayerWin();
+      boolean notAWinner = notAWinner();
       endTurn();
 
-      return winner;
+      return notAWinner;
    }
 
    private void addCoinToCurrentPlayerPurse() {
@@ -151,7 +151,7 @@ public class GameBetter implements IGame {
       return true;
    }
 
-   private boolean didPlayerWin() {
+   private boolean notAWinner() {
       return purses[currentPlayer] != 6;
    }
 
