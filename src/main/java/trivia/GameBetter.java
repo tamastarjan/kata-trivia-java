@@ -52,6 +52,11 @@ public class GameBetter implements IGame {
   }
 
   private void regularRoll(int roll) {
+    movePlayer(roll);
+    askQuestion();
+  }
+
+  private void movePlayer(int roll) {
     int newPosition = players.getCurrentPlayerPosition() + roll;
     if (newPosition > 11) {
       newPosition = newPosition - 12;
@@ -62,7 +67,6 @@ public class GameBetter implements IGame {
         + "'s new location is "
         + players.getCurrentPlayerPosition());
     System.out.println("The category is " + currentCategory());
-    askQuestion();
   }
 
   private void askQuestion() {
