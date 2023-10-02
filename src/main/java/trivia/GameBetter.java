@@ -66,7 +66,8 @@ public class GameBetter implements IGame {
   }
 
   private void askQuestion() {
-    questions.askQuestion(currentCategory());
+    var question = questions.nextQuestion(currentCategory());
+    System.out.println(question);
   }
 
   private String currentCategory() {

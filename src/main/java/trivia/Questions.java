@@ -13,14 +13,12 @@ class Questions {
     }
   }
 
-  public void askQuestion(String category) {
+  public String nextQuestion(String category) {
     if (!categoryNameToCategory.containsKey(category)) {
       throw new IllegalArgumentException("Unknown category: " + category);
     }
 
     var questionList = categoryNameToCategory.get(category);
-    var question = questionList.next();
-
-    System.out.println(question);
+    return questionList.next();
   }
 }
