@@ -103,9 +103,10 @@ public class GameBetter implements IGame {
   public boolean wrongAnswer() {
     System.out.println("Question was incorrectly answered");
     System.out.println(players.getCurrentPlayerName() + " was sent to the penalty box");
-    players.putCurrentPlayerInPenaltyBox();
 
+    players.putCurrentPlayerInPenaltyBox();
     players.endTurn();
+    
     return true;
   }
 }
