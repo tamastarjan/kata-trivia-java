@@ -5,20 +5,20 @@ import java.util.Map;
 
 class Questions {
 
-  private Map<String, QuestionCategory> categoryToQuestionList = new HashMap<>();
+  private Map<String, QuestionCategory> categoryNameToCategory = new HashMap<>();
 
   public Questions(QuestionCategory... categories) {
     for (QuestionCategory category : categories) {
-      categoryToQuestionList.put(category.getCategoryName(), category);
+      categoryNameToCategory.put(category.getCategoryName(), category);
     }
   }
 
   public void askQuestion(String category) {
-    if (!categoryToQuestionList.containsKey(category)) {
+    if (!categoryNameToCategory.containsKey(category)) {
       throw new IllegalArgumentException("Unknown category: " + category);
     }
 
-    var questionList = categoryToQuestionList.get(category);
+    var questionList = categoryNameToCategory.get(category);
     var question = questionList.next();
 
     System.out.println(question);
