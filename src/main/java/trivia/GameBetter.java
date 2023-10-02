@@ -80,7 +80,7 @@ public class GameBetter implements IGame {
       addCoinToCurrentPlayerPurse();
       printCurrentPlayerCoins();
 
-      boolean notAWinner = notAWinner();
+      boolean notAWinner = players.isNotAWinner();
       players.endTurn();
 
       return notAWinner;
@@ -95,7 +95,7 @@ public class GameBetter implements IGame {
     addCoinToCurrentPlayerPurse();
     printCurrentPlayerCoins();
 
-    boolean notAWinner = notAWinner();
+    boolean notAWinner = players.isNotAWinner();
     players.endTurn();
 
     return notAWinner;
@@ -119,9 +119,5 @@ public class GameBetter implements IGame {
 
     players.endTurn();
     return true;
-  }
-
-  private boolean notAWinner() {
-    return players.isNotAWinner();
   }
 }
