@@ -3,28 +3,15 @@ package trivia;
 // REFACTOR ME
 public class GameBetterWithLogging implements IGame {
 
-  private Players players = Players.create();
-
   private Questions questions = new Questions(
       QuestionCategory.create("Pop", 50),
       QuestionCategory.create("Science", 50),
       QuestionCategory.create("Sports", 50),
       QuestionCategory.create("Rock", 50));
 
-  private String[] positionToQuestionCategory = new String[]{
-      "Pop",
-      "Science",
-      "Sports",
-      "Rock",
-      "Pop",
-      "Science",
-      "Sports",
-      "Rock",
-      "Pop",
-      "Science",
-      "Sports",
-      "Rock"
-  };
+  private Board board = Board.create("Pop", "Science", "Sports", "Rock");
+
+  private Players players = Players.create();
 
   public boolean add(String playerName) {
     players.add(Player.create(playerName));
@@ -62,16 +49,16 @@ public class GameBetterWithLogging implements IGame {
     System.out.println(players.getCurrentPlayerName()
         + "'s new location is "
         + players.getCurrentPlayerPosition());
-    System.out.println("The category is " + currentCategory());
+    System.out.println("The category is " + getCurrentCategory());
   }
 
   private void askQuestion() {
-    var question = questions.nextQuestion(currentCategory());
+    var question = questions.nextQuestion(getCurrentCategory());
     System.out.println(question);
   }
 
-  private String currentCategory() {
-    return positionToQuestionCategory[players.getCurrentPlayerPosition()];
+  private String getCurrentCategory() {
+    return board.getCategoryName(players.getCurrentPlayerPosition());
   }
 
   public boolean wasCorrectlyAnswered() {
