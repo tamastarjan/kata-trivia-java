@@ -1,7 +1,9 @@
 package trivia;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 // REFACTOR ME
 public class GameBetter implements IGame {
@@ -17,6 +19,21 @@ public class GameBetter implements IGame {
 
    int currentPlayer = 0;
    boolean isGettingOutOfPenaltyBox;
+
+   private String[] positionToQuestionCategory = new String[]{
+       "Pop",
+       "Science",
+       "Sports",
+       "Rock",
+       "Pop",
+       "Science",
+       "Sports",
+       "Rock",
+       "Pop",
+       "Science",
+       "Sports",
+       "Rock"
+   };
 
    public GameBetter() {
       for (int i = 0; i < 50; i++) {
@@ -86,16 +103,7 @@ public class GameBetter implements IGame {
    }
 
    private String currentCategory() {
-      if (places[currentPlayer] == 0) return "Pop";
-      if (places[currentPlayer] == 4) return "Pop";
-      if (places[currentPlayer] == 8) return "Pop";
-      if (places[currentPlayer] == 1) return "Science";
-      if (places[currentPlayer] == 5) return "Science";
-      if (places[currentPlayer] == 9) return "Science";
-      if (places[currentPlayer] == 2) return "Sports";
-      if (places[currentPlayer] == 6) return "Sports";
-      if (places[currentPlayer] == 10) return "Sports";
-      return "Rock";
+      return positionToQuestionCategory[places[currentPlayer]];
    }
 
    public boolean wasCorrectlyAnswered() {
