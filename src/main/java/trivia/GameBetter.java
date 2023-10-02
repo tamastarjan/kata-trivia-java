@@ -107,7 +107,7 @@ public class GameBetter implements IGame {
    public boolean wasCorrectlyAnswered() {
       if (!inPenaltyBox[currentPlayer]) {
          System.out.println("Answer was corrent!!!!");
-         purses[currentPlayer]++;
+         addCoinToCurrentPlayerPurse();
          printCurrentPlayerCoins();
 
          boolean winner = didPlayerWin();
@@ -122,13 +122,17 @@ public class GameBetter implements IGame {
       }
 
       System.out.println("Answer was correct!!!!");
-      purses[currentPlayer]++;
+      addCoinToCurrentPlayerPurse();
       printCurrentPlayerCoins();
 
       boolean winner = didPlayerWin();
       endTurn();
 
       return winner;
+   }
+
+   private void addCoinToCurrentPlayerPurse() {
+      purses[currentPlayer]++;
    }
 
    private void printCurrentPlayerCoins() {
