@@ -32,10 +32,6 @@ public class GameBetter implements IGame {
       "Rock"
   };
 
-  public String createRockQuestion(int index) {
-    return "Rock Question " + index;
-  }
-
   public boolean add(String playerName) {
     players.add(playerName);
     places[howManyPlayers()] = 0;
