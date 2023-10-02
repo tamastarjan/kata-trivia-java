@@ -122,11 +122,11 @@ public class GameBetter implements IGame {
             if (currentPlayer == players.size()) currentPlayer = 0;
 
             return winner;
-         } else {
-            currentPlayer++;
-            if (currentPlayer == players.size()) currentPlayer = 0;
-            return true;
          }
+
+         currentPlayer++;
+         if (currentPlayer == players.size()) currentPlayer = 0;
+         return true;
       } else {
          System.out.println("Answer was corrent!!!!");
          purses[currentPlayer]++;
