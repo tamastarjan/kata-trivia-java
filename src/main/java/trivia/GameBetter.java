@@ -5,7 +5,9 @@ import java.util.List;
 
 // REFACTOR ME
 public class GameBetter implements IGame {
+
   private List<Player> players = new ArrayList<>();
+  
   private Player currentPlayer;
 
   private QuestionBank questionBank = new QuestionBank(
