@@ -1,7 +1,6 @@
 package trivia;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 // REFACTOR ME
 public class GameBetter implements IGame {
@@ -10,10 +9,10 @@ public class GameBetter implements IGame {
   int[] purses = new int[6];
   boolean[] inPenaltyBox = new boolean[6];
 
-  LinkedList popQuestions = new LinkedList();
-  LinkedList scienceQuestions = new LinkedList();
-  LinkedList sportsQuestions = new LinkedList();
-  LinkedList rockQuestions = new LinkedList();
+  private QuestionList popQuestions = QuestionList.create("Pop", 50);
+  private QuestionList scienceQuestions = QuestionList.create("Science", 50);
+  private QuestionList sportsQuestions = QuestionList.create("Sports", 50);
+  private QuestionList rockQuestions = QuestionList.create("Rock", 50);
 
   int currentPlayer = 0;
   boolean isGettingOutOfPenaltyBox;
@@ -32,15 +31,6 @@ public class GameBetter implements IGame {
       "Sports",
       "Rock"
   };
-
-  public GameBetter() {
-    for (int i = 0; i < 50; i++) {
-      popQuestions.addLast("Pop Question " + i);
-      scienceQuestions.addLast(("Science Question " + i));
-      sportsQuestions.addLast(("Sports Question " + i));
-      rockQuestions.addLast(createRockQuestion(i));
-    }
-  }
 
   public String createRockQuestion(int index) {
     return "Rock Question " + index;
@@ -91,13 +81,13 @@ public class GameBetter implements IGame {
 
   private void askQuestion() {
     if (currentCategory() == "Pop")
-      System.out.println(popQuestions.removeFirst());
+      System.out.println(popQuestions.next());
     if (currentCategory() == "Science")
-      System.out.println(scienceQuestions.removeFirst());
+      System.out.println(scienceQuestions.next());
     if (currentCategory() == "Sports")
-      System.out.println(sportsQuestions.removeFirst());
+      System.out.println(sportsQuestions.next());
     if (currentCategory() == "Rock")
-      System.out.println(rockQuestions.removeFirst());
+      System.out.println(rockQuestions.next());
   }
 
   private String currentCategory() {
