@@ -106,7 +106,7 @@ public class GameBetter implements IGame {
 
    public boolean wasCorrectlyAnswered() {
       if (!inPenaltyBox[currentPlayer]) {
-         System.out.println("Answer was corrent!!!!");
+         System.out.println("Answer was correct!!!!");
          addCoinToCurrentPlayerPurse();
          printCurrentPlayerCoins();
 
