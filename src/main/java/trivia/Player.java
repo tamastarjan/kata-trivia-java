@@ -38,11 +38,11 @@ class Player {
     return coins;
   }
 
-  public boolean isNotInPenaltyBox() {
-    return !inPenaltyBox;
-  }
-
   public void putInPenaltyBox() {
     inPenaltyBox = true;
+  }
+
+  public boolean isInPenaltyBox() {
+    return inPenaltyBox;
   }
 }

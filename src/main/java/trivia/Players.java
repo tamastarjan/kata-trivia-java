@@ -31,7 +31,7 @@ class Players {
   }
 
   public boolean isCurrentPlayerInPenaltyBox() {
-    return getCurrentPlayer().isNotInPenaltyBox();
+    return getCurrentPlayer().isInPenaltyBox();
   }
 
   public int getCurrentPlayerPosition() {
