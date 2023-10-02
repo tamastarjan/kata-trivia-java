@@ -1,6 +1,6 @@
 package trivia;
 
-class QuestionList {
+class QuestionCategory {
 
   private String categoryName;
 
@@ -8,11 +8,11 @@ class QuestionList {
 
   private int currentQuestionIndex;
 
-  private QuestionList() {
+  private QuestionCategory() {
   }
 
-  public static QuestionList create(String categoryName, int numberOfQuestions) {
-    QuestionList questionList = new QuestionList();
+  public static QuestionCategory create(String categoryName, int numberOfQuestions) {
+    QuestionCategory questionList = new QuestionCategory();
     questionList.categoryName = categoryName;
     questionList.numberOfQuestions = numberOfQuestions;
     questionList.currentQuestionIndex = 0;

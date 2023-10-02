@@ -5,10 +5,10 @@ import java.util.Map;
 
 class Questions {
 
-  private Map<String, QuestionList> categoryToQuestionList = new HashMap<>();
+  private Map<String, QuestionCategory> categoryToQuestionList = new HashMap<>();
 
-  public Questions(QuestionList... questionLists) {
-    for (QuestionList questionList : questionLists) {
+  public Questions(QuestionCategory... questionLists) {
+    for (QuestionCategory questionList : questionLists) {
       categoryToQuestionList.put(questionList.getCategoryName(), questionList);
     }
   }

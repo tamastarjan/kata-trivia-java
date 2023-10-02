@@ -6,10 +6,10 @@ public class GameBetter implements IGame {
   private Players players = Players.create();
 
   private Questions questions = new Questions(
-      QuestionList.create("Pop", 50),
-      QuestionList.create("Science", 50),
-      QuestionList.create("Sports", 50),
-      QuestionList.create("Rock", 50));
+      QuestionCategory.create("Pop", 50),
+      QuestionCategory.create("Science", 50),
+      QuestionCategory.create("Sports", 50),
+      QuestionCategory.create("Rock", 50));
 
   private String[] positionToQuestionCategory = new String[]{
       "Pop",
