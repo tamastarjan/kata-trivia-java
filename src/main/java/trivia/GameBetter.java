@@ -31,7 +31,7 @@ public class GameBetter implements IGame {
     }
 
     if (!players.isCurrentPlayerInPenaltyBox()) {
-      movePlayer(roll);
+      board.movePlayer(players.getCurrentPlayer(), roll);
       askQuestion();
     }
   }
@@ -61,19 +61,6 @@ public class GameBetter implements IGame {
     players.endTurn();
 
     return true;
-  }
-
-  private void movePlayer(int roll) {
-    int newPosition = players.getCurrentPlayerPosition() + roll;
-    if (newPosition > 11) {
-      newPosition = newPosition - 12;
-    }
-    players.setCurrentPlayerPosition(newPosition);
-
-    System.out.println(players.getCurrentPlayerName()
-        + "'s new location is "
-        + players.getCurrentPlayerPosition());
-    System.out.println("The category is " + getCurrentCategory());
   }
 
   private void askQuestion() {

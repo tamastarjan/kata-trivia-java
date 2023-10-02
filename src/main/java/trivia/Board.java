@@ -21,4 +21,17 @@ class Board {
   public QuestionCategoryName getCategoryName(int position) {
     return positionToCategory[position];
   }
+
+  public void movePlayer(Player player, int roll) {
+    int newPosition = player.getPositionOnBoard() + roll;
+    while (newPosition > positionToCategory.length - 1) {
+      newPosition = newPosition - positionToCategory.length;
+    }
+    player.setPositionOnBoard(newPosition);
+
+    System.out.println(player.getName()
+        + "'s new location is "
+        + player.getPositionOnBoard());
+    System.out.println("The category is " + getCategoryName(player.getPositionOnBoard()));
+  }
 }

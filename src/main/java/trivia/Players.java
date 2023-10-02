@@ -38,10 +38,6 @@ class Players {
     return getCurrentPlayer().getPositionOnBoard();
   }
 
-  public void setCurrentPlayerPosition(int newPosition) {
-    getCurrentPlayer().setPositionOnBoard(newPosition);
-  }
-
   public void giveCoinToCurrentPlayer() {
     getCurrentPlayer().giveCoin();
   }
