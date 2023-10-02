@@ -152,8 +152,7 @@ public class GameBetter implements IGame {
       if (currentPlayer == players.size()) currentPlayer = 0;
       return true;
    }
-
-
+   
    private boolean didPlayerWin() {
       return !(purses[currentPlayer] == 6);
    }
