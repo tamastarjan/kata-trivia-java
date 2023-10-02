@@ -5,20 +5,20 @@ import java.util.List;
 
 class Board {
 
-  private String[] positionToQuestionCategoryName;
+  private final QuestionCategoryName[] positionToCategory;
 
-  private Board(List<String> questionCategoryNames) {
-    positionToQuestionCategoryName = new String[questionCategoryNames.size() * 3];
-    for (int i = 0; i < positionToQuestionCategoryName.length; i++) {
-      positionToQuestionCategoryName[i] = questionCategoryNames.get(i % questionCategoryNames.size());
+  private Board(List<QuestionCategoryName> categories) {
+    positionToCategory = new QuestionCategoryName[categories.size() * 3];
+    for (int i = 0; i < positionToCategory.length; i++) {
+      positionToCategory[i] = categories.get(i % categories.size());
     }
   }
 
-  public static Board create(String... questionCategoryNames) {
-    return new Board(Arrays.asList(questionCategoryNames));
+  public static Board create(QuestionCategoryName... categories) {
+    return new Board(Arrays.asList(categories));
   }
 
-  public String getCategoryName(int position) {
-    return positionToQuestionCategoryName[position];
+  public QuestionCategoryName getCategoryName(int position) {
+    return positionToCategory[position];
   }
 }

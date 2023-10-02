@@ -4,12 +4,13 @@ package trivia;
 public class GameBetterWithLogging implements IGame {
 
   private Questions questions = new Questions(
-      QuestionCategory.create("Pop", 50),
-      QuestionCategory.create("Science", 50),
-      QuestionCategory.create("Sports", 50),
-      QuestionCategory.create("Rock", 50));
+      QuestionCategoryName.POP.createQuestionList(),
+      QuestionCategoryName.SCIENCE.createQuestionList(),
+      QuestionCategoryName.SPORTS.createQuestionList(),
+      QuestionCategoryName.ROCK.createQuestionList());
 
-  private Board board = Board.create("Pop", "Science", "Sports", "Rock");
+  private Board board = Board.create(QuestionCategoryName.POP, QuestionCategoryName.SCIENCE,
+      QuestionCategoryName.SPORTS, QuestionCategoryName.ROCK);
 
   private Players players = Players.create();
 
@@ -57,7 +58,7 @@ public class GameBetterWithLogging implements IGame {
     System.out.println(question);
   }
 
-  private String getCurrentCategory() {
+  private QuestionCategoryName getCurrentCategory() {
     return board.getCategoryName(players.getCurrentPlayerPosition());
   }
 

@@ -5,7 +5,7 @@ import java.util.Map;
 
 class Questions {
 
-  private Map<String, QuestionCategory> categoryNameToCategory = new HashMap<>();
+  private Map<QuestionCategoryName, QuestionCategory> categoryNameToCategory = new HashMap<>();
 
   public Questions(QuestionCategory... categories) {
     for (QuestionCategory category : categories) {
@@ -13,7 +13,7 @@ class Questions {
     }
   }
 
-  public String nextQuestion(String category) {
+  public String nextQuestion(QuestionCategoryName category) {
     if (!categoryNameToCategory.containsKey(category)) {
       throw new IllegalArgumentException("Unknown category: " + category);
     }

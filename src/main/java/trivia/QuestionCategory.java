@@ -2,7 +2,7 @@ package trivia;
 
 class QuestionCategory {
 
-  private String categoryName;
+  private QuestionCategoryName categoryName;
 
   private int numberOfQuestions;
 
@@ -11,7 +11,7 @@ class QuestionCategory {
   private QuestionCategory() {
   }
 
-  public static QuestionCategory create(String categoryName, int numberOfQuestions) {
+  public static QuestionCategory create(QuestionCategoryName categoryName, int numberOfQuestions) {
     QuestionCategory questionList = new QuestionCategory();
     questionList.categoryName = categoryName;
     questionList.numberOfQuestions = numberOfQuestions;
@@ -29,7 +29,7 @@ class QuestionCategory {
     return question;
   }
 
-  public String getCategoryName() {
+  public QuestionCategoryName getCategoryName() {
     return categoryName;
   }
 }
