@@ -57,4 +57,8 @@ class Players {
   public void endTurn() {
     players.add(players.remove(0));
   }
+
+  public boolean isNotAWinner() {
+    return getCurrentPlayerCoins() != 6;
+  }
 }

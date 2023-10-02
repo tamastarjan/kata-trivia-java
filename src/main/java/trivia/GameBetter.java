@@ -122,6 +122,6 @@ public class GameBetter implements IGame {
   }
 
   private boolean notAWinner() {
-    return players.getCurrentPlayerCoins() != 6;
+    return players.isNotAWinner();
   }
 }
