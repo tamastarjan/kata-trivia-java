@@ -67,9 +67,7 @@ public class GameBetter implements IGame {
             System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
             isGettingOutOfPenaltyBox = false;
          }
-
       } else {
-
          places[currentPlayer] = places[currentPlayer] + roll;
          if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
 
@@ -79,7 +77,6 @@ public class GameBetter implements IGame {
          System.out.println("The category is " + currentCategory());
          askQuestion();
       }
-
    }
 
    private void askQuestion() {
