@@ -1,14 +1,9 @@
 package trivia;
 
-import java.util.ArrayList;
-import java.util.List;
-
 // REFACTOR ME
 public class GameBetter implements IGame {
 
-  private List<Player> players = new ArrayList<>();
-  
-  private Player currentPlayer;
+  private Players players = Players.create();
 
   private QuestionBank questionBank = new QuestionBank(
       QuestionList.create("Pop", 50),
@@ -35,46 +30,38 @@ public class GameBetter implements IGame {
 
   public boolean add(String playerName) {
     players.add(Player.create(playerName));
-    if (players.size() == 1) {
-      currentPlayer = players.get(0);
-    }
-
     System.out.println(playerName + " was added");
-    System.out.println("They are player number " + players.size());
+    System.out.println("They are player number " + players.count());
     return true;
   }
 
-  public int howManyPlayers() {
-    return players.size();
-  }
-
   public void roll(int roll) {
-    System.out.println(currentPlayer.getName() + " is the current player");
+    System.out.println(players.getCurrentPlayerName() + " is the current player");
     System.out.println("They have rolled a " + roll);
 
-    if (currentPlayer.isNotInPenaltyBox()) {
+    if (!players.isCurrentPlayerInPenaltyBox()) {
       regularRoll(roll);
     } else if (roll % 2 != 0) {
       isGettingOutOfPenaltyBox = true;
 
-      System.out.println(currentPlayer.getName() + " is getting out of the penalty box");
+      System.out.println(players.getCurrentPlayerName() + " is getting out of the penalty box");
       regularRoll(roll);
     } else {
-      System.out.println(currentPlayer.getName() + " is not getting out of the penalty box");
+      System.out.println(players.getCurrentPlayerName() + " is not getting out of the penalty box");
       isGettingOutOfPenaltyBox = false;
     }
   }
 
   private void regularRoll(int roll) {
-    int newPosition = currentPlayer.getPositionOnBoard() + roll;
+    int newPosition = players.getCurrentPlayerPosition() + roll;
     if (newPosition > 11) {
       newPosition = newPosition - 12;
     }
-    currentPlayer.setPositionOnBoard(newPosition);
+    players.setCurrentPlayerPosition(newPosition);
 
-    System.out.println(currentPlayer.getName()
+    System.out.println(players.getCurrentPlayerName()
         + "'s new location is "
-        + currentPlayer.getPositionOnBoard());
+        + players.getCurrentPlayerPosition());
     System.out.println("The category is " + currentCategory());
     askQuestion();
   }
@@ -84,11 +71,11 @@ public class GameBetter implements IGame {
   }
 
   private String currentCategory() {
-    return positionToQuestionCategory[currentPlayer.getPositionOnBoard()];
+    return positionToQuestionCategory[players.getCurrentPlayerPosition()];
   }
 
   public boolean wasCorrectlyAnswered() {
-    if (currentPlayer.isNotInPenaltyBox()) {
+    if (!players.isCurrentPlayerInPenaltyBox()) {
       System.out.println("Answer was correct!!!!");
       addCoinToCurrentPlayerPurse();
       printCurrentPlayerCoins();
@@ -115,31 +102,30 @@ public class GameBetter implements IGame {
   }
 
   private void addCoinToCurrentPlayerPurse() {
-    currentPlayer.giveCoin();
+    players.giveCoinToCurrentPlayer();
   }
 
   private void printCurrentPlayerCoins() {
-    System.out.println(currentPlayer.getName()
+    System.out.println(players.getCurrentPlayerName()
         + " now has "
-        + currentPlayer.getCoins()
+        + players.getCurrentPlayerCoins()
         + " Gold Coins.");
   }
 
   public boolean wrongAnswer() {
     System.out.println("Question was incorrectly answered");
-    System.out.println(currentPlayer.getName() + " was sent to the penalty box");
-    currentPlayer.putInPenaltyBox();
+    System.out.println(players.getCurrentPlayerName() + " was sent to the penalty box");
+    players.putCurrentPlayerInPenaltyBox();
 
     endTurn();
     return true;
   }
 
   private boolean notAWinner() {
-    return currentPlayer.getCoins() != 6;
+    return players.getCurrentPlayerCoins() != 6;
   }
 
   private void endTurn() {
-    players.add(players.remove(0));
-    currentPlayer = players.get(0);
+    players.endTurn();
   }
 }
