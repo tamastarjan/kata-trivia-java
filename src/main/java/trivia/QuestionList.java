@@ -28,4 +28,8 @@ class QuestionList {
 
     return question;
   }
+
+  public String getCategoryName() {
+    return categoryName;
+  }
 }
