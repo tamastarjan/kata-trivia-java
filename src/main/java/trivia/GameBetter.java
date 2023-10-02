@@ -11,8 +11,6 @@ public class GameBetter implements IGame {
       QuestionList.create("Sports", 50),
       QuestionList.create("Rock", 50));
 
-  boolean isGettingOutOfPenaltyBox;
-
   private String[] positionToQuestionCategory = new String[]{
       "Pop",
       "Science",
@@ -39,16 +37,17 @@ public class GameBetter implements IGame {
     System.out.println(players.getCurrentPlayerName() + " is the current player");
     System.out.println("They have rolled a " + roll);
 
+    if (players.isCurrentPlayerInPenaltyBox()) {
+      if (roll % 2 != 0) {
+        System.out.println(players.getCurrentPlayerName() + " is getting out of the penalty box");
+        players.removeCurrentPlayerFromPenaltyBox();
+      } else {
+        System.out.println(players.getCurrentPlayerName() + " is not getting out of the penalty box");
+      }
+    }
+
     if (!players.isCurrentPlayerInPenaltyBox()) {
       regularRoll(roll);
-    } else if (roll % 2 != 0) {
-      isGettingOutOfPenaltyBox = true;
-
-      System.out.println(players.getCurrentPlayerName() + " is getting out of the penalty box");
-      regularRoll(roll);
-    } else {
-      System.out.println(players.getCurrentPlayerName() + " is not getting out of the penalty box");
-      isGettingOutOfPenaltyBox = false;
     }
   }
 
@@ -75,18 +74,7 @@ public class GameBetter implements IGame {
   }
 
   public boolean wasCorrectlyAnswered() {
-    if (!players.isCurrentPlayerInPenaltyBox()) {
-      System.out.println("Answer was correct!!!!");
-      addCoinToCurrentPlayerPurse();
-      printCurrentPlayerCoins();
-
-      boolean notAWinner = players.isNotAWinner();
-      players.endTurn();
-
-      return notAWinner;
-    }
-
-    if (!isGettingOutOfPenaltyBox) {
+    if (players.isCurrentPlayerInPenaltyBox()) {
       players.endTurn();
       return true;
     }
