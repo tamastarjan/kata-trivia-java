@@ -7,8 +7,8 @@ class Questions {
 
   private Map<String, QuestionCategory> categoryToQuestionList = new HashMap<>();
 
-  public Questions(QuestionCategory... questionLists) {
-    for (QuestionCategory questionList : questionLists) {
+  public Questions(QuestionCategory... categories) {
+    for (QuestionCategory questionList : categories) {
       categoryToQuestionList.put(questionList.getCategoryName(), questionList);
     }
   }
