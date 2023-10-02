@@ -108,13 +108,13 @@ public class GameBetter implements IGame {
    }
 
    public boolean wasCorrectlyAnswered() {
-      if (inPenaltyBox[currentPlayer]) {
-         if (!isGettingOutOfPenaltyBox) {
-            currentPlayer++;
-            if (currentPlayer == players.size()) currentPlayer = 0;
-            return true;
-         }
+      if (inPenaltyBox[currentPlayer] && !isGettingOutOfPenaltyBox) {
+         currentPlayer++;
+         if (currentPlayer == players.size()) currentPlayer = 0;
+         return true;
+      }
 
+      if (inPenaltyBox[currentPlayer]) {
          System.out.println("Answer was correct!!!!");
          purses[currentPlayer]++;
          System.out.println(players.get(currentPlayer)
