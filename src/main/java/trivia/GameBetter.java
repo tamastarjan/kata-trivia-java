@@ -50,7 +50,16 @@ public class GameBetter implements IGame {
       System.out.println(players.get(currentPlayer) + " is the current player");
       System.out.println("They have rolled a " + roll);
 
-      if (inPenaltyBox[currentPlayer]) {
+      if (!inPenaltyBox[currentPlayer]) {
+         places[currentPlayer] = places[currentPlayer] + roll;
+         if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
+
+         System.out.println(players.get(currentPlayer)
+             + "'s new location is "
+             + places[currentPlayer]);
+         System.out.println("The category is " + currentCategory());
+         askQuestion();
+      } else {
          if (roll % 2 != 0) {
             isGettingOutOfPenaltyBox = true;
 
@@ -59,23 +68,14 @@ public class GameBetter implements IGame {
             if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
 
             System.out.println(players.get(currentPlayer)
-                               + "'s new location is "
-                               + places[currentPlayer]);
+                + "'s new location is "
+                + places[currentPlayer]);
             System.out.println("The category is " + currentCategory());
             askQuestion();
          } else {
             System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
             isGettingOutOfPenaltyBox = false;
          }
-      } else {
-         places[currentPlayer] = places[currentPlayer] + roll;
-         if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
-
-         System.out.println(players.get(currentPlayer)
-                            + "'s new location is "
-                            + places[currentPlayer]);
-         System.out.println("The category is " + currentCategory());
-         askQuestion();
       }
    }
 
@@ -89,7 +89,7 @@ public class GameBetter implements IGame {
       if (currentCategory() == "Rock")
          System.out.println(rockQuestions.removeFirst());
    }
-   
+
    private String currentCategory() {
       if (places[currentPlayer] == 0) return "Pop";
       if (places[currentPlayer] == 4) return "Pop";
