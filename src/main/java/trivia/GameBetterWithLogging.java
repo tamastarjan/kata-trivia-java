@@ -22,7 +22,7 @@ public class GameBetterWithLogging implements IGame {
     System.out.println("They have rolled a " + roll);
 
     if (players.isCurrentPlayerInPenaltyBox()) {
-      if (roll % 2 != 0) {
+      if (isOdd(roll)) {
         System.out.println(players.getCurrentPlayerName() + " is getting out of the penalty box");
         players.removeCurrentPlayerFromPenaltyBox();
       } else {
@@ -35,6 +35,7 @@ public class GameBetterWithLogging implements IGame {
       askQuestion();
     }
   }
+
 
   public boolean wasCorrectlyAnswered() {
     if (players.isCurrentPlayerInPenaltyBox()) {
@@ -93,5 +94,9 @@ public class GameBetterWithLogging implements IGame {
         + " now has "
         + players.getCurrentPlayerCoins()
         + " Gold Coins.");
+  }
+
+  private static boolean isOdd(int roll) {
+    return roll % 2 != 0;
   }
 }
