@@ -81,13 +81,13 @@ public class GameBetter implements IGame {
       printCurrentPlayerCoins();
 
       boolean notAWinner = notAWinner();
-      endTurn();
+      players.endTurn();
 
       return notAWinner;
     }
 
     if (!isGettingOutOfPenaltyBox) {
-      endTurn();
+      players.endTurn();
       return true;
     }
 
@@ -96,7 +96,7 @@ public class GameBetter implements IGame {
     printCurrentPlayerCoins();
 
     boolean notAWinner = notAWinner();
-    endTurn();
+    players.endTurn();
 
     return notAWinner;
   }
@@ -117,15 +117,11 @@ public class GameBetter implements IGame {
     System.out.println(players.getCurrentPlayerName() + " was sent to the penalty box");
     players.putCurrentPlayerInPenaltyBox();
 
-    endTurn();
+    players.endTurn();
     return true;
   }
 
   private boolean notAWinner() {
     return players.getCurrentPlayerCoins() != 6;
-  }
-
-  private void endTurn() {
-    players.endTurn();
   }
 }
