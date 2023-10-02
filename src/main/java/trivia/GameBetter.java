@@ -47,13 +47,9 @@ public class GameBetter implements IGame {
     }
 
     if (!players.isCurrentPlayerInPenaltyBox()) {
-      regularRoll(roll);
+      movePlayer(roll);
+      askQuestion();
     }
-  }
-
-  private void regularRoll(int roll) {
-    movePlayer(roll);
-    askQuestion();
   }
 
   private void movePlayer(int roll) {
