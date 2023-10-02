@@ -36,6 +36,32 @@ public class GameBetterWithLogging implements IGame {
     }
   }
 
+  public boolean wasCorrectlyAnswered() {
+    if (players.isCurrentPlayerInPenaltyBox()) {
+      players.endTurn();
+      return true;
+    }
+
+    System.out.println("Answer was correct!!!!");
+    addCoinToCurrentPlayerPurse();
+    printCurrentPlayerCoins();
+
+    boolean notAWinner = players.isNotAWinner();
+    players.endTurn();
+
+    return notAWinner;
+  }
+
+  public boolean wrongAnswer() {
+    System.out.println("Question was incorrectly answered");
+    System.out.println(players.getCurrentPlayerName() + " was sent to the penalty box");
+
+    players.putCurrentPlayerInPenaltyBox();
+    players.endTurn();
+
+    return true;
+  }
+
   private void movePlayer(int roll) {
     int newPosition = players.getCurrentPlayerPosition() + roll;
     if (newPosition > 11) {
@@ -58,22 +84,6 @@ public class GameBetterWithLogging implements IGame {
     return board.getCategoryName(players.getCurrentPlayerPosition());
   }
 
-  public boolean wasCorrectlyAnswered() {
-    if (players.isCurrentPlayerInPenaltyBox()) {
-      players.endTurn();
-      return true;
-    }
-
-    System.out.println("Answer was correct!!!!");
-    addCoinToCurrentPlayerPurse();
-    printCurrentPlayerCoins();
-
-    boolean notAWinner = players.isNotAWinner();
-    players.endTurn();
-
-    return notAWinner;
-  }
-
   private void addCoinToCurrentPlayerPurse() {
     players.giveCoinToCurrentPlayer();
   }
@@ -83,15 +93,5 @@ public class GameBetterWithLogging implements IGame {
         + " now has "
         + players.getCurrentPlayerCoins()
         + " Gold Coins.");
-  }
-
-  public boolean wrongAnswer() {
-    System.out.println("Question was incorrectly answered");
-    System.out.println(players.getCurrentPlayerName() + " was sent to the penalty box");
-
-    players.putCurrentPlayerInPenaltyBox();
-    players.endTurn();
-
-    return true;
   }
 }
