@@ -123,13 +123,21 @@ public class Game implements IGame {
             + " now has "
             + purses[currentPlayer]
             + " Gold Coins.");
- 
+
         boolean winner = didPlayerWin();
+        // before ending the turn, we should remove the player from the penalty box if needed
+        if (isGettingOutOfPenaltyBox) {
+          inPenaltyBox[currentPlayer] = false;
+        }
         currentPlayer++;
         if (currentPlayer == players.size()) currentPlayer = 0;
 
         return winner;
       } else {
+        // before ending the turn, we should remove the player from the penalty box if needed
+        if (isGettingOutOfPenaltyBox) {
+          inPenaltyBox[currentPlayer] = false;
+        }
         currentPlayer++;
         if (currentPlayer == players.size()) currentPlayer = 0;
         return true;
@@ -146,6 +154,10 @@ public class Game implements IGame {
           + " Gold Coins.");
 
       boolean winner = didPlayerWin();
+      // before ending the turn, we should remove the player from the penalty box if needed
+      if (isGettingOutOfPenaltyBox) {
+        inPenaltyBox[currentPlayer] = false;
+      }
       currentPlayer++;
       if (currentPlayer == players.size()) currentPlayer = 0;
 
@@ -157,7 +169,6 @@ public class Game implements IGame {
     System.out.println("Question was incorrectly answered");
     System.out.println(players.get(currentPlayer) + " was sent to the penalty box");
     inPenaltyBox[currentPlayer] = true;
-
     currentPlayer++;
     if (currentPlayer == players.size()) currentPlayer = 0;
     return true;
