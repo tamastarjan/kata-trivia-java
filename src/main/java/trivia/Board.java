@@ -31,10 +31,5 @@ public class Board {
       newPosition = newPosition - positionToCategory.length;
     }
     player.setPositionOnBoard(newPosition);
-
-    System.out.println(player.getName()
-        + "'s new location is "
-        + player.getPositionOnBoard());
-    System.out.println("The category is " + getCategoryName(player.getPositionOnBoard()));
   }
 }

@@ -13,5 +13,10 @@ class MovePlayer implements RollRule {
     }
 
     board.movePlayer(players.getCurrentPlayer(), rollValue);
+    
+    System.out.println(players.getCurrentPlayerName()
+        + "'s new location is "
+        + players.getCurrentPlayerPosition());
+    System.out.println("The category is " + board.getCategoryName(players.getCurrentPlayerPosition()));
   }
 }

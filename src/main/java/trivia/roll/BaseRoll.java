@@ -20,6 +20,12 @@ class BaseRoll implements Roll {
     }
 
     board.movePlayer(players.getCurrentPlayer(), value);
+
+    System.out.println(players.getCurrentPlayerName()
+        + "'s new location is "
+        + players.getCurrentPlayerPosition());
+    System.out.println("The category is " + board.getCategoryName(players.getCurrentPlayerPosition()));
+
     askQuestion(questions, board, players);
   }
 
