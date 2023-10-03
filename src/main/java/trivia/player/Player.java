@@ -1,6 +1,6 @@
-package trivia;
+package trivia.player;
 
-class Player {
+public class Player {
 
   private final String name;
 

@@ -1,5 +1,10 @@
 package trivia;
 
+import trivia.player.Player;
+import trivia.player.Players;
+import trivia.question.QuestionCategoryName;
+import trivia.question.Questions;
+
 // REFACTOR ME
 public class GameBetter implements IGame {
 

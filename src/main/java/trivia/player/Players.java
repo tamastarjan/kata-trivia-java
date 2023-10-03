@@ -1,9 +1,9 @@
-package trivia;
+package trivia.player;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class Players {
+public class Players {
 
   private List<Player> players = new ArrayList<>();
 

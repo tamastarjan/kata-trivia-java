@@ -1,9 +1,9 @@
-package trivia;
+package trivia.question;
 
 import java.util.HashMap;
 import java.util.Map;
 
-class Questions {
+public class Questions {
 
   private Map<QuestionCategoryName, QuestionCategory> nameToCategory = new HashMap<>();
 

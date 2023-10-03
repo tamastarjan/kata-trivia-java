@@ -1,9 +1,12 @@
 package trivia;
 
+import trivia.player.Player;
+import trivia.question.QuestionCategoryName;
+
 import java.util.Arrays;
 import java.util.List;
 
-class Board {
+public class Board {
 
   private final QuestionCategoryName[] positionToCategory;
 

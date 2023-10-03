@@ -1,6 +1,6 @@
-package trivia;
+package trivia.question;
 
-enum QuestionCategoryName {
+public enum QuestionCategoryName {
 
   POP("Pop"),
   SCIENCE("Science"),
