@@ -3,7 +3,6 @@ package trivia;
 import trivia.alternative.RollRules;
 import trivia.player.Player;
 import trivia.player.Players;
-import trivia.question.QuestionCategoryName;
 import trivia.question.Questions;
 
 // REFACTOR ME
@@ -11,8 +10,7 @@ public class GameBetter implements IGame {
 
   private Questions questions = Questions.create();
 
-  private Board board = Board.create(QuestionCategoryName.POP, QuestionCategoryName.SCIENCE,
-      QuestionCategoryName.SPORTS, QuestionCategoryName.ROCK);
+  private Board board = Board.create();
 
   private Players players = Players.create();
 

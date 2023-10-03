@@ -3,22 +3,25 @@ package trivia;
 import trivia.player.Player;
 import trivia.question.QuestionCategoryName;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Board {
 
   private final QuestionCategoryName[] positionToCategory;
 
-  private Board(List<QuestionCategoryName> categories) {
-    positionToCategory = new QuestionCategoryName[categories.size() * 3];
-    for (int i = 0; i < positionToCategory.length; i++) {
-      positionToCategory[i] = categories.get(i % categories.size());
-    }
+  private Board() {
+    positionToCategory = new QuestionCategoryName[]{
+        QuestionCategoryName.POP, QuestionCategoryName.SCIENCE,
+        QuestionCategoryName.SPORTS, QuestionCategoryName.ROCK,
+
+        QuestionCategoryName.POP, QuestionCategoryName.SCIENCE,
+        QuestionCategoryName.SPORTS, QuestionCategoryName.ROCK,
+
+        QuestionCategoryName.POP, QuestionCategoryName.SCIENCE,
+        QuestionCategoryName.SPORTS, QuestionCategoryName.ROCK,
+    };
   }
 
-  public static Board create(QuestionCategoryName... categories) {
-    return new Board(Arrays.asList(categories));
+  public static Board create() {
+    return new Board();
   }
 
   public QuestionCategoryName getCategoryName(int position) {
