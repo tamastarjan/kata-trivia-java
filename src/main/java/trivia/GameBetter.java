@@ -4,6 +4,7 @@ import trivia.player.Player;
 import trivia.player.Players;
 import trivia.question.QuestionCategoryName;
 import trivia.question.Questions;
+import trivia.roll.Roll;
 
 // REFACTOR ME
 public class GameBetter implements IGame {
@@ -22,23 +23,12 @@ public class GameBetter implements IGame {
     return true;
   }
 
-  public void roll(int roll) {
+  public void roll(int rollValue) {
     System.out.println(players.getCurrentPlayerName() + " is the current player");
-    System.out.println("They have rolled a " + roll);
+    System.out.println("They have rolled a " + rollValue);
 
-    if (players.isCurrentPlayerInPenaltyBox()) {
-      if (isOdd(roll)) {
-        System.out.println(players.getCurrentPlayerName() + " is getting out of the penalty box");
-        players.removeCurrentPlayerFromPenaltyBox();
-      } else {
-        System.out.println(players.getCurrentPlayerName() + " is not getting out of the penalty box");
-      }
-    }
-
-    if (!players.isCurrentPlayerInPenaltyBox()) {
-      board.movePlayer(players.getCurrentPlayer(), roll);
-      askQuestion();
-    }
+    var roll = Roll.create(rollValue);
+    roll.applyTo(players, board, questions);
   }
 
 
