@@ -1,10 +1,10 @@
 package trivia;
 
+import trivia.alternative.RollRules;
 import trivia.player.Player;
 import trivia.player.Players;
 import trivia.question.QuestionCategoryName;
 import trivia.question.Questions;
-import trivia.roll.Roll;
 
 // REFACTOR ME
 public class GameBetter implements IGame {
@@ -27,8 +27,14 @@ public class GameBetter implements IGame {
     System.out.println(players.getCurrentPlayerName() + " is the current player");
     System.out.println("They have rolled a " + rollValue);
 
-    var roll = Roll.create(rollValue);
-    roll.applyTo(players, board, questions);
+    // Idea 1: Represent the roll as a strategy which handles the state mutations
+    // var roll = Roll.create(rollValue);
+    // roll.applyTo(players, board, questions);
+    
+    // Idea 2: Separate state mutations into rules
+    for (var rule : RollRules.RULES) {
+      rule.applyTo(rollValue, players, board, questions);
+    }
   }
 
 
