@@ -30,7 +30,7 @@ public class GameBetter implements IGame {
     // Idea 1: Represent the roll as a strategy which handles the state mutations
     // var roll = Roll.create(rollValue);
     // roll.applyTo(players, board, questions);
-    
+
     // Idea 2: Separate state mutations into rules
     for (var rule : RollRules.RULES) {
       rule.applyTo(rollValue, players, board, questions);
@@ -64,15 +64,6 @@ public class GameBetter implements IGame {
     return true;
   }
 
-  private void askQuestion() {
-    var question = questions.nextQuestion(getCurrentCategory());
-    System.out.println(question);
-  }
-
-  private QuestionCategoryName getCurrentCategory() {
-    return board.getCategoryName(players.getCurrentPlayerPosition());
-  }
-
   private void addCoinToCurrentPlayerPurse() {
     players.giveCoinToCurrentPlayer();
   }
@@ -82,9 +73,5 @@ public class GameBetter implements IGame {
         + " now has "
         + players.getCurrentPlayerCoins()
         + " Gold Coins.");
-  }
-
-  private static boolean isOdd(int roll) {
-    return roll % 2 != 0;
   }
 }
